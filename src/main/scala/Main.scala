@@ -1,11 +1,5 @@
 package com.example.ingest.vector
 
-import geotrellis.raster._
-import geotrellis.spark._
-import geotrellis.spark.io._
-import geotrellis.spark.io.file._
-import geotrellis.spark.util.SparkUtils
-
 import mil.nga.giat.geowave.core.geotime.ingest._
 import mil.nga.giat.geowave.core.store._
 import mil.nga.giat.geowave.core.store.index.PrimaryIndex
@@ -18,11 +12,6 @@ import org.geotools.feature.simple._
 import org.opengis.feature.simple._
 
 import com.vividsolutions.jts.geom.Coordinate
-
-// import org.apache.commons.io.IOUtils
-// import org.apache.spark.SparkConf
-// import org.apache.spark._
-// import org.apache.spark.rdd._
 
 import scala.util.Try
 
@@ -143,38 +132,5 @@ object GdeltIngestMain {
 
     ingestFiles(inputs, ds);
 
-    // implicit val sc = SparkUtils.createSparkContext("GeoTrellis to GeoWave", new SparkConf(true))
-
-    // val attributeStore = FileAttributeStore(args(0))
-    // val layerReader = FileLayerReader(attributeStore)
-    // val layerId = LayerId("landsat", args(1).toInt)
-    // val rdd = layerReader.read[SpatialKey, Tile, TileLayerMetadata[SpatialKey]](layerId)
-
-    // val mt = rdd.metadata.mapTransform
-    // val crs = Some(rdd.metadata.crs)
-    // val metadata = new java.util.HashMap[String, String]()
-
-    // rdd.mapPartitions({ part =>
-    //   val basicOperations = RasterIngest.getAccumuloOperationsInstance("leader", "instance", "root", "password", "gwRaster")
-    //   val dataStore = RasterIngest.getGeowaveDataStore(basicOperations)
-    //   val index = RasterIngest.createSpatialIndex
-    //   val visible = part/*.dropWhile({ case (key, tile) => tile.toArray.head == -16777216})*/
-
-    //   visible.take(1024).map({ case (key, tile) =>
-    //     val extent = mt(key)
-    //     val raster = Raster(tile, extent)
-    //     val image = TileRasterToGridCoverage2D(raster, crs)
-    //     val adapter = new RasterDataAdapter("landsat", metadata, image, 16, true)
-    //     val indexWriter = dataStore.createWriter(adapter, index).asInstanceOf[IndexWriter[GridCoverage]]
-
-    //     print("+")
-    //     indexWriter.write(image)
-    //     indexWriter.close
-    //     Unit
-    //   })
-    // }, preservesPartitioning = true).collect
-    // println
-
-    
   }
 }

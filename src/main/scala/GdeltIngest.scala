@@ -14,6 +14,7 @@ import org.geotools.feature.simple._
 import org.opengis.feature.simple._
 
 import com.vividsolutions.jts.geom.Geometry
+import com.vividsolutions.jts.geom.Point
 
 object GdeltIngest {
 
